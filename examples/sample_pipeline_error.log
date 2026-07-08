@@ -1,0 +1,7 @@
+2026-07-08T20:10:01Z INFO Starting pipeline job deploy-production
+2026-07-08T20:10:04Z INFO Checking environment variables
+2026-07-08T20:10:06Z WARNING Deprecated dependency detected: old-package==1.2.0
+2026-07-08T20:10:11Z INFO Running database migration
+2026-07-08T20:10:15Z ERROR Migration failed: relation users already exists
+2026-07-08T20:10:15Z ERROR Pipeline failed with exit code 1
+2026-07-08T20:10:16Z INFO Uploading failure artifacts

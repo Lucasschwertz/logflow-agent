@@ -1,0 +1,23 @@
+# Python
+__pycache__/
+*.py[cod]
+.pytest_cache/
+.ruff_cache/
+
+# Ambientes virtuais
+.venv/
+venv/
+env/
+
+# Variáveis de ambiente
+.env
+
+# Saídas geradas pela aplicação
+outputs/*
+!outputs/.gitkeep
+
+# Sistema operacional / editor
+.DS_Store
+Thumbs.db
+.vscode/
+.idea/

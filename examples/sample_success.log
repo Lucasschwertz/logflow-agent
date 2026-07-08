@@ -1,0 +1,6 @@
+2026-07-08T19:00:01Z INFO Starting pipeline job build-and-test
+2026-07-08T19:00:05Z INFO Installing dependencies
+2026-07-08T19:00:20Z INFO Running lint
+2026-07-08T19:00:30Z INFO Running unit tests
+2026-07-08T19:00:42Z INFO 18 passed in 4.22s
+2026-07-08T19:00:44Z INFO Pipeline finished successfully
