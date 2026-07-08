@@ -71,6 +71,7 @@ def analyze_log_node(state: LogAnalysisState) -> LogAnalysisState:
 
 
 def generate_report_node(state: LogAnalysisState) -> LogAnalysisState:
+    report_status = 'finished'
     report_content = f'''# Relatório LogFlow Agent
 
 ## Arquivo analisado
@@ -79,7 +80,7 @@ def generate_report_node(state: LogAnalysisState) -> LogAnalysisState:
 
 ## Status
 
-{state['status']}
+{report_status}
 
 ## Severidade
 
