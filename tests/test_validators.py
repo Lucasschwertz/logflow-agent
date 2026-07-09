@@ -1,4 +1,5 @@
 
+from src.agent.nodes import generate_report_node
 from src.security.validators import validate_log_content, validate_log_path
 from src.tools.log_tools import (
     build_recommendation,
@@ -139,3 +140,27 @@ def test_build_recommendation_for_migration_error():
     # Assert
     assert 'migração' in recommendation
     assert 'idempotência' in recommendation
+
+
+def test_generate_report_uses_final_status_in_markdown(tmp_path):
+    # Arrange
+    output_path = tmp_path / 'report.md'
+    state = {
+        'input_path': 'examples/sample_pipeline_error.log',
+        'output_path': str(output_path),
+        'status': 'log_analyzed',
+        'severity': 'alta',
+        'summary': 'Resumo do log.',
+        'recommendation': 'Recomendação do log.',
+        'detected_errors': [],
+        'detected_warnings': [],
+    }
+
+    # Act
+    result = generate_report_node(state)
+
+    # Assert
+    report_content = output_path.read_text(encoding='utf-8')
+    assert result['status'] == 'report_generated'
+    assert '## Status\n\nfinished' in report_content
+    assert '## Status\n\nlog_analyzed' not in report_content
