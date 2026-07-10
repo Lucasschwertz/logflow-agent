@@ -1,3 +1,7 @@
+fastapi
 langgraph
+httpx
+python-multipart
 pytest
 ruff
+uvicorn

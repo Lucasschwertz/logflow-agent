@@ -20,6 +20,8 @@ a severidade e grava um relatório em `outputs/logflow-report.md`.
 
 - Python 3.12
 - LangGraph
+- FastAPI
+- Uvicorn
 - pytest
 - Ruff
 - GitHub Actions para lint e testes
@@ -55,6 +57,8 @@ pip install -r requirements.txt
 
 ## Execução
 
+### CLI
+
 ```powershell
 python -m src.main ".\examples\sample_pipeline_error.log"
 ```
@@ -64,6 +68,30 @@ Para escolher outro caminho de saída:
 ```powershell
 python -m src.main ".\examples\sample_pipeline_error.log" --output ".\outputs\logflow-report.md"
 ```
+
+### API HTTP opcional
+
+A API FastAPI é opcional e não substitui a CLI. Ela existe para permitir uma
+futura integração com frontend, mantendo o mesmo grafo LangGraph usado pelo
+comando de terminal.
+
+Para subir a API localmente:
+
+```powershell
+uvicorn src.api.main:app --reload
+```
+
+Depois acesse a documentação interativa:
+
+```text
+http://127.0.0.1:8000/docs
+```
+
+Endpoints disponíveis:
+
+- `GET /health`: verifica se a API está ativa.
+- `POST /analyze`: recebe upload multipart de arquivo `.log` ou `.txt` e retorna
+  o resultado da análise em JSON.
 
 ## Exemplos de entrada e saída
 
