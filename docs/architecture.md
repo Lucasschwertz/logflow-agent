@@ -7,6 +7,10 @@ LangGraph. Cada nó executa uma etapa pequena da análise de logs: validação,
 leitura, preparação segura do contexto, análise, geração do relatório e resposta
 final.
 
+Além da CLI, o projeto possui uma API FastAPI opcional em `src/api/`. Essa API
+atua como adaptador HTTP: recebe upload de arquivo, salva temporariamente em
+local controlado e chama o mesmo `build_graph()` usado pela CLI.
+
 O projeto evita chamadas externas e dependências adicionais. A análise é feita
 com funções determinísticas para manter o comportamento simples, testável e
 adequado ao mini-projeto.
@@ -70,12 +74,14 @@ ou conteúdo vazio.
   classificação de severidade, resumo e recomendação.
 - `src/security/validators.py`: validação de caminho, extensão, tamanho e
   conteúdo mínimo.
+- `src/api/main.py`: camada HTTP opcional com `GET /health` e `POST /analyze`.
 
 ## Decisões de simplificação
 
 - A análise não usa LLM em tempo de execução, para evitar custo, latência e
   exposição acidental de logs sensíveis.
 - O grafo mantém poucos nós e responsabilidades diretas.
+- A API não altera o contrato da CLI nem o fluxo principal do LangGraph.
 - A severidade usa regras simples: dois ou mais erros são `alta`, um erro é
   `média`, apenas avisos é `baixa` e ausência de achados é `informativa`.
 - O relatório é sempre Markdown para facilitar leitura local.
