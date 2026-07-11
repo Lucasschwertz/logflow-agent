@@ -19,6 +19,25 @@ def test_health_returns_ok():
     }
 
 
+def test_cors_preflight_allows_local_development_origin():
+    # Act
+    response = client.options(
+        '/analyze',
+        headers={
+            'Origin': 'http://localhost:8080',
+            'Access-Control-Request-Method': 'POST',
+            'Access-Control-Request-Headers': 'content-type',
+        },
+    )
+
+    # Assert
+    assert response.status_code == 200
+    assert response.headers['access-control-allow-origin'] == (
+        'http://localhost:8080'
+    )
+    assert 'POST' in response.headers['access-control-allow-methods']
+
+
 def test_analyze_sample_pipeline_error_log_returns_finished_high_severity():
     # Arrange
     sample_path = Path('examples/sample_pipeline_error.log')

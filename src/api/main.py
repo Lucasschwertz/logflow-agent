@@ -2,6 +2,7 @@ from pathlib import Path
 from tempfile import TemporaryDirectory
 
 from fastapi import FastAPI, File, UploadFile
+from fastapi.middleware.cors import CORSMiddleware
 from fastapi.responses import JSONResponse
 
 from src.agent.graph import build_graph
@@ -9,11 +10,26 @@ from src.api.schemas import AnalyzeResponse, HealthResponse
 
 ALLOWED_UPLOAD_EXTENSIONS = {'.log', '.txt'}
 DEFAULT_REPORT_PATH = 'outputs/logflow-report.md'
+LOCAL_DEVELOPMENT_ORIGINS = [
+    'http://localhost:8080',
+    'http://127.0.0.1:8080',
+    'http://localhost:5173',
+    'http://127.0.0.1:5173',
+    'http://localhost:3000',
+    'http://127.0.0.1:3000',
+]
 
 app = FastAPI(
     title='LogFlow Agent API',
     description='API HTTP opcional para análise de logs pelo LogFlow Agent.',
     version='1.0.0',
+)
+
+app.add_middleware(
+    CORSMiddleware,
+    allow_origins=LOCAL_DEVELOPMENT_ORIGINS,
+    allow_methods=['GET', 'POST', 'OPTIONS'],
+    allow_headers=['*'],
 )
 
 
