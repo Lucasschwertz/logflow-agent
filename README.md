@@ -93,6 +93,24 @@ Endpoints disponíveis:
 - `POST /analyze`: recebe upload multipart de arquivo `.log` ou `.txt` e retorna
   o resultado da análise em JSON.
 
+## Apresentação do mini-projeto
+
+A apresentação final está em `slides/logflow-agent-presentation.html`, em
+formato HTML/landing page. Ela possui duas seções principais equivalentes aos
+dois slides exigidos pelo enunciado.
+
+Para visualizar:
+
+1. Baixe ou clone este repositório.
+2. Abra `slides/logflow-agent-presentation.html` diretamente no navegador.
+
+No GitHub, o arquivo HTML pode ser exibido como código-fonte. Para ver o layout
+da apresentação, abra o arquivo localmente no navegador.
+
+A apresentação cobre o problema, a proposta do agente, entrada, saída,
+ferramenta utilizada e fluxo geral da solução. As evidências de planejamento e
+uso de IA estão registradas em `docs/prompts.md`.
+
 ## Exemplos de entrada e saída
 
 Entrada com erro:
