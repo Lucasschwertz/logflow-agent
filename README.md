@@ -101,8 +101,10 @@ dois slides exigidos pelo enunciado.
 
 Para visualizar:
 
-1. Baixe ou clone este repositório.
-2. Abra `slides/logflow-agent-presentation.html` diretamente no navegador.
+1. Acesse a versão publicada no GitHub Pages:
+   <https://lucasschwertz.github.io/logflow-agent/slides/logflow-agent-presentation.html>
+2. Se preferir abrir localmente, baixe ou clone este repositório.
+3. Abra `slides/logflow-agent-presentation.html` diretamente no navegador.
 
 No GitHub, o arquivo HTML pode ser exibido como código-fonte. Para ver o layout
 da apresentação, abra o arquivo localmente no navegador.
